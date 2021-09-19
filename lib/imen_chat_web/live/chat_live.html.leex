@@ -12,10 +12,10 @@
 <%= f = form_for :msg, "#", [phx_submit: "send"] %>
 
 	<%= label f, :name %>
-	<%= text_input f, :name %>
+	<%= text_input f, :name, value: @username %>
 	
-	<%= label f, :body %>
-	<%= text_input f, :body %>
+	<%= label f, :message %>
+	<%= text_input f, :body, value: @msg %>
 
 	<%= submit "Send"  %>
 </form>

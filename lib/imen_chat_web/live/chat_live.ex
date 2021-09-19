@@ -6,11 +6,12 @@ defmodule ImenChatWeb.ChatLive do
       ImenChatWeb.Endpoint.subscribe("chat")
     end
 
-    {:ok, assign(socket, messages: [])}
+    {:ok, assign(socket, messages: [], username: "", msg: "")}
   end
 
   def handle_event("send", %{"msg" => %{"body" => body, "name" => name}}, socket) do
     ImenChatWeb.Endpoint.broadcast!("chat", "new_message", %{:body => body, :name => name})
+    socket = assign(socket, username: name, msg: "")
     {:noreply, socket}
   end
 
