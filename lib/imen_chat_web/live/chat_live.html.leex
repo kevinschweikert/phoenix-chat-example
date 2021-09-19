@@ -1,0 +1,22 @@
+<h1>ImEn Chat</h1>
+
+<div id="chat_window">
+	<%= for message <- @messages do %>
+	<div class="chat_message">
+		<div class="name"><%= message.name %>:</div>
+		<div class="body"><%= message.body %></div>
+	</div>
+	<% end %>
+</div>
+
+<%= f = form_for :msg, "#", [phx_submit: "send"] %>
+
+	<%= label f, :name %>
+	<%= text_input f, :name %>
+	
+	<%= label f, :body %>
+	<%= text_input f, :body %>
+
+	<%= submit "Send"  %>
+</form>
+
